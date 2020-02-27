@@ -19,10 +19,10 @@ public struct AnyLogger {
     public let error: (String) -> ()
     
     public init(
-        debug: @escaping (String) -> () = { (message) in
+        debug: (@escaping (String) -> ()) = { (message) in
             os_log("%s", log: OSLog.default, type: .default, message)
         },
-        error: @escaping (String) -> () = { (message) in
+        error: (@escaping (String) -> ()) = { (message) in
             os_log("%s", log: OSLog.default, type: .error, message)
         }
     ) {
