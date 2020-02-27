@@ -33,7 +33,7 @@ public struct AnyLogger: Logger {
 extension Publisher {
 //    func handleEvents(receiveSubscription: ((Subscription) -> Void)? = nil, receiveOutput: ((()) -> Void)? = nil, receiveCompletion: ((Subscribers.Completion<Error>) -> Void)? = nil, receiveCancel: (() -> Void)? = nil, receiveRequest: ((Subscribers.Demand) -> Void)? = nil) -> Publishers.HandleEvents<AnyPublisher<(), Error>>
     
-    func logDebug(_ identifier: String) -> AnyPublisher<Output, Failure> {
+    public func logDebug(_ identifier: String) -> AnyPublisher<Output, Failure> {
         handleEvents(receiveSubscription: { (subscription) in
                 log.debug("\(identifier) receiveSubscription: \(subscription)")
             }, receiveOutput: { (output) in
