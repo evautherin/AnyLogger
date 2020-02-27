@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		8FD009292407F27800D9E939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FD009282407F27800D9E939 /* Assets.xcassets */; };
 		8FD0092C2407F27800D9E939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0092B2407F27800D9E939 /* Preview Assets.xcassets */; };
 		8FD0092F2407F27800D9E939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0092D2407F27800D9E939 /* LaunchScreen.storyboard */; };
+		8FD0093C2407F4E500D9E939 /* AnyLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 8FD0093B2407F4E500D9E939 /* AnyLogger */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8FD0092B2407F27800D9E939 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8FD0092E2407F27800D9E939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FD009302407F27800D9E939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FD009392407F49A00D9E939 /* AnyLogger */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AnyLogger; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD0093C2407F4E500D9E939 /* AnyLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +43,10 @@
 		8FD009162407F27600D9E939 = {
 			isa = PBXGroup;
 			children = (
+				8FD009392407F49A00D9E939 /* AnyLogger */,
 				8FD009212407F27600D9E939 /* Simple iOS Example */,
 				8FD009202407F27600D9E939 /* Products */,
+				8FD0093A2407F4E500D9E939 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +80,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		8FD0093A2407F4E500D9E939 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,6 +103,9 @@
 			dependencies = (
 			);
 			name = "Simple iOS Example";
+			packageProductDependencies = (
+				8FD0093B2407F4E500D9E939 /* AnyLogger */,
+			);
 			productName = "Simple iOS Example";
 			productReference = 8FD0091F2407F27600D9E939 /* Simple iOS Example.app */;
 			productType = "com.apple.product-type.application";
@@ -342,6 +357,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8FD0093B2407F4E500D9E939 /* AnyLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AnyLogger;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8FD009172407F27600D9E939 /* Project object */;
 }
