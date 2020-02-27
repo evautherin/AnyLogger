@@ -14,7 +14,7 @@ public var log = AnyLogger()
 
 public protocol Logger {
     func debug(_ message: String)
-    func error(_ e: Error)
+    func error(_ message: String)
 }
 
 
@@ -23,7 +23,7 @@ public struct AnyLogger: Logger {
         os_log("%s", log: OSLog.default, type: .default, message)
     }
     
-    public func error(_ e: Error) {
-        os_log("%s", log: OSLog.default, type: .error, e.localizedDescription)
+    public func error(_ message: String) {
+        os_log("%s", log: OSLog.default, type: .error, message)
     }
 }
