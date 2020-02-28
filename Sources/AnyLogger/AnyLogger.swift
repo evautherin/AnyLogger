@@ -13,10 +13,11 @@ import Combine
 
 public var log = AnyLogger()
 
-
+#if DEBUG
 public struct AnyLogger {
     public let debug: (String) -> ()
     public let error: (String) -> ()
+    
     
     public init(
         debug: (@escaping (String) -> ()) = { (message) in
@@ -30,11 +31,29 @@ public struct AnyLogger {
         self.error = error
     }
 }
+#else
+public struct AnyLogger {
+    public let debug: (String) -> ()
+    public let error: (String) -> ()
+    
+    
+    public init(
+        debug: (@escaping (String) -> ()) = { _ in },
+        error: (@escaping (String) -> ()) = { (message) in
+            os_log("%s", log: OSLog.default, type: .error, message)
+        }
+    ) {
+        self.debug = debug
+        self.error = error
+    }
+}
+#endif
 
 
 extension Publisher {
 //    func handleEvents(receiveSubscription: ((Subscription) -> Void)? = nil, receiveOutput: ((()) -> Void)? = nil, receiveCompletion: ((Subscribers.Completion<Error>) -> Void)? = nil, receiveCancel: (() -> Void)? = nil, receiveRequest: ((Subscribers.Demand) -> Void)? = nil) -> Publishers.HandleEvents<AnyPublisher<(), Error>>
     
+    #if DEBUG
     public func logDebug(_ identifier: String) -> AnyPublisher<Output, Failure> {
         handleEvents(receiveSubscription: { (subscription) in
                 log.debug("\(identifier) receiveSubscription: \(subscription)")
@@ -43,7 +62,7 @@ extension Publisher {
             }, receiveCompletion: { (completion) in
                 switch (completion) {
                 case .finished: log.debug("\(identifier) finished")
-                case .failure(let error): log.error("\(identifier) error \(error.localizedDescription)")
+                case .failure(let error): log.debug("\(identifier) error \(error.localizedDescription)")
                 }
             }, receiveCancel: {
                 log.debug("\(identifier) receiveCancel")
@@ -52,4 +71,9 @@ extension Publisher {
             })
             .eraseToAnyPublisher()
     }
+    #else
+    public func logDebug(_ identifier: String) -> AnyPublisher<Output, Failure> {
+        eraseToAnyPublisher()
+    }
+    #endif
 }
