@@ -72,7 +72,7 @@ extension Publisher {
             .eraseToAnyPublisher()
     }
     #else
-    public func logDebug(_ identifier: String) -> AnyPublisher<Output, Failure> {
+    public func logDebug(_: String) -> AnyPublisher<Output, Failure> {
         eraseToAnyPublisher()
     }
     #endif
